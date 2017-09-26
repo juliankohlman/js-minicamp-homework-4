@@ -104,15 +104,15 @@ function cacheFunction(cb) {
   // if the function you return is invoked with 5 it would pass 5 to cb(5) and return 25
   // if the function you return is invoked again with 5 it will look on an object in the closure scope
   // and return 25 directly and will not invoke cb again
-  var result = {};
+  var resultCache = {};
   return function (input) {
-    if (Object.keys(result).length === 0) {
-      result[input] = cb(input);
-      return result[input];
-    } else if (input in result) {
-      return result[input];
+    if (Object.keys(resultCache).length === 0) {
+      resultCache[input] = cb(input);
+      return resultCache[input];
+    } else if (input in resultCache) {
+      return resultCache[input];
     } else {
-      result[input] = cb(input);
+      resultCache[input] = cb(input);
     }
   };
 }
