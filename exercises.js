@@ -6,7 +6,7 @@ function multiplyArguments() {
   // if one argument is passed in just return it
   if (arguments.length === 0) {
     return 0;
-  } else if (arguments.length === 0) {
+  } else if (arguments.length === 1) {
     return arguments[0];
   } else {
     return Array.from(arguments).reduce(function (a, b) {
